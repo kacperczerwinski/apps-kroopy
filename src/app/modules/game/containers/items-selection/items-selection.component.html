@@ -1,0 +1,14 @@
+<div fxLayout fxLayoutAlign="center center">
+  <mat-card fxFlex.gt-md="30%" fxFlex.lt-md="90%" >
+    <mat-card-title>Selecciona accesorios</mat-card-title>
+
+    <mat-card-content fxLayout="column" >
+      <mat-selection-list [(ngModel)]="selectedOptions">
+        <mat-list-option *ngFor="let item of keys(items) " [value]="item">
+          {{items[item]}}
+        </mat-list-option>
+      </mat-selection-list>
+      <button mat-raised-button color="accent"  (click)="navigate()">Añadir</button>
+    </mat-card-content>
+  </mat-card>
+</div>

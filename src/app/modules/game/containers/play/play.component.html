@@ -1,0 +1,27 @@
+<mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+
+<div fxLayout fxLayoutAlign="center center">
+    <div >
+        <div fxLayout="column" fxLayoutAlign="space-between center">
+            <h2 fxFlexOffset.sm="20" fxFlexOffset="50">{{currentGame.game.text}}</h2>
+          {{currentGame | json}}
+            <button fxFlexOffset.sm="30" fxFlexOffset="100" style="width: 80px; height: 80px;" mat-fab color="accent" (click)="startTimer()" >
+                Jugar
+            </button>
+            <div fxFlexOffset.sm="30" fxFlexOffset="100" *ngIf="play">
+                <mat-progress-spinner
+                    class="example-margin"
+                    color="accent"
+                    mode="determinate"
+                    [value]="progressbarValue"
+                    style="margin-left: 12px"
+                >
+                </mat-progress-spinner>
+                <img
+                    src="./assets/images/kroopy.png"
+                    style="position:relative; top: -75px; left: 37px; max-width: 40%;"
+                />
+            </div>
+        </div>
+    </div>
+</div>

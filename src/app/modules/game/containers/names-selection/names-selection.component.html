@@ -1,0 +1,23 @@
+<div fxLayout fxLayoutAlign="center">
+    <mat-card fxFlex="30%">
+        <mat-card-title>Escribe Nombres </mat-card-title>
+
+        <mat-card-content fxLayout="column">
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <i class="fa fa-female" style="margin-right: 5%"></i>
+                <mat-form-field fxFlex>
+                    <input matInput [(ngModel)]="femaleName"/>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <i class="fa fa-male" style="margin-right: 5%"></i>
+                <mat-form-field fxFlex>
+                    <input matInput [(ngModel)]="maleName"/>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <button mat-fab color="accent"(click)="navigate()">Jugar</button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

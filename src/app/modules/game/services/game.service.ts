@@ -32,10 +32,9 @@ export class GameService {
             playerName: this.getPlayerName(),
             level: this.getLevel(),
             progress: this.getProgress(),
-            game: this.getGame()
+            game: this.getGame(),
         };
     }
-
     private getPlayerName() {
         return this.gameState.currentPlayer === SexEnum.FEMALE ? this.gameState.femaleName : this.gameState.maleName;
     }
@@ -76,4 +75,16 @@ export class GameService {
         this.gameState.currentPlayer = Math.random() >= 0.5 ? SexEnum.MALE : SexEnum.FEMALE;
         this.games = [...games];
     }
+    nextLevel(): CurrentGame {
+      this.gameState.level = ++this.gameState.level;
+      this.gameState.progress = 0;
+      this.gameState.currentPlayer = Math.random() >= 0.5 ? SexEnum.MALE : SexEnum.FEMALE;
+        return {
+            sex: this.getSex(),
+            playerName: this.getPlayerName(),
+            level: this.getLevel(),
+            progress: this.getProgress(),
+            game: this.getGame(),
+        };
+    };
 }

@@ -37,4 +37,10 @@ export class PlayComponent implements OnInit {
             }
         });
     }
+    nextLevel() {
+      this.gameService.getCurrentGame();
+      this.currentGame = this.gameService.nextLevel();
+    }
 }
+
+

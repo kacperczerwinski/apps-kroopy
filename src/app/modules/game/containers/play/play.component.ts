@@ -16,8 +16,8 @@ export class PlayComponent implements OnInit {
     constructor(private gameService: GameService) {}
 
     ngOnInit(): void {
+      this.gameService.resetGame();
         this.loadCurrentGame();
-        this.gameService.resetGame();
         console.log(this.currentGame);
     }
 
@@ -26,7 +26,6 @@ export class PlayComponent implements OnInit {
     }
 
     startTimer() {
-        this.loadCurrentGame();
         this.play = true;
         const timer$ = interval(1000);
 
@@ -38,6 +37,7 @@ export class PlayComponent implements OnInit {
                 sub.unsubscribe();
                 this.play = false;
                 this.progressbarValue = 0;
+                this.loadCurrentGame();
             }
         });
     }

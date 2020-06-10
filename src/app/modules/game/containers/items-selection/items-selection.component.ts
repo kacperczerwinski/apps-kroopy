@@ -18,7 +18,6 @@ export class ItemsSelectionComponent implements OnInit {
     ngOnInit(): void {}
 
     navigate() {
-        console.log(this.selectedOptions);
         this.gameService.updateSelectedItems(this.selectedOptions);
         this.router.navigate(['/game/names-selection']);
     }

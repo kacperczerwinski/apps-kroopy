@@ -1,14 +1,26 @@
-<mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+<mat-progress-bar mode="determinate" [value]="currentGame.progress"></mat-progress-bar>
+<div fxLayout fxLayoutAlign="end end">
+    <button mat-raised-button color="accent" (click)="nextLevel()">Siguiente Nivel</button>
+</div>
 
 <div fxLayout fxLayoutAlign="center center">
-    <div >
+    <div>
         <div fxLayout="column" fxLayoutAlign="space-between center">
-            <h2 fxFlexOffset.sm="20" fxFlexOffset="50">{{currentGame.game.text}}</h2>
-          {{currentGame | json}}
-            <button fxFlexOffset.sm="30" fxFlexOffset="100" style="width: 80px; height: 80px;" mat-fab color="accent" (click)="startTimer()" >
-                Jugar
-            </button>
-            <div fxFlexOffset.sm="30" fxFlexOffset="100" *ngIf="play">
+            <img [src]="'../assets/images/levels/' + currentGame.level + '.png'" />
+            <h2 fxFlexOffset.sm="10" fxFlexOffset="10">{{ currentGame.game.text }}</h2>
+            <div *ngIf="!play" (click)="play = false">
+                <button
+                    fxFlexOffset.sm="1"
+                    fxFlexOffset="10"
+                    style="width: 80px; height: 80px;"
+                    mat-fab
+                    color="accent"
+                    (click)="startTimer()"
+                >
+                    Jugar
+                </button>
+            </div>
+            <div fxFlexOffset.sm="1" fxFlexOffset="10" *ngIf="play">
                 <mat-progress-spinner
                     class="example-margin"
                     color="accent"

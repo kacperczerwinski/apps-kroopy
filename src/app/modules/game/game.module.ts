@@ -14,6 +14,7 @@ import { PlayComponent } from './containers/play/play.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
+import { MatMenuModule } from '@angular/material/menu';
 
 export const routes: Routes = [
     {
@@ -50,7 +51,8 @@ export const routes: Routes = [
         MatIconModule,
         MatProgressBarModule,
         MatProgressSpinnerModule,
-        FormsModule
+        FormsModule,
+        MatMenuModule
     ]
 })
 export class GameModule {}

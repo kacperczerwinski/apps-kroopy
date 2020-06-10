@@ -1,4 +1,38 @@
-<div fxLayout fxLayoutAlign="center" style="margin-bottom: 1%">
-  <img src="../assets/images/logo.png" fxFlex="15%"/>
-</div>
-<router-outlet></router-outlet>
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav
+        #drawer
+        class="sidenav"
+        fixedTopGap
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'"
+        [opened]="(isHandset$ | async) === false"
+    >
+        <mat-toolbar class="toolbar-divider">
+            <div fxLayout fxLayoutAlign="center" style="margin-bottom: 1%; margin-top: 5%">
+                <img src="../assets/images/logo.png" fxFlex="60" />
+            </div>
+        </mat-toolbar>
+        <mat-nav-list>
+            <a mat-list-item href="#">Home</a>
+            <mat-divider></mat-divider>
+            <a mat-list-item href="#">Tutorial</a>
+            <mat-divider></mat-divider>
+            <a mat-list-item href="#">Items</a>
+            <mat-divider></mat-divider>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content style="background-color: white">
+        <mat-toolbar color="accent">
+            <button
+                type="button"
+                aria-label="Toggle sidenav"
+                mat-icon-button
+                (click)="drawer.toggle()"
+                *ngIf="isHandset$ | async"
+            >
+                <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            </button>
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

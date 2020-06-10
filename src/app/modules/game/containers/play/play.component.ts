@@ -16,13 +16,17 @@ export class PlayComponent implements OnInit {
     constructor(private gameService: GameService) {}
 
     ngOnInit(): void {
-        this.currentGame = this.gameService.getCurrentGame();
+        this.loadCurrentGame();
         this.gameService.resetGame();
         console.log(this.currentGame);
     }
 
-    startTimer() {
+    private loadCurrentGame() {
         this.currentGame = this.gameService.getCurrentGame();
+    }
+
+    startTimer() {
+        this.loadCurrentGame();
         this.play = true;
         const timer$ = interval(1000);
 
@@ -37,10 +41,9 @@ export class PlayComponent implements OnInit {
             }
         });
     }
+
     nextLevel() {
-      this.gameService.getCurrentGame();
-      this.currentGame = this.gameService.nextLevel();
+        this.gameService.nextLevel();
+        this.loadCurrentGame();
     }
 }
-
-

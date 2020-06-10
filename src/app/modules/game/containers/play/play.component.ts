@@ -16,8 +16,8 @@ export class PlayComponent implements OnInit {
     constructor(private gameService: GameService) {}
 
     ngOnInit(): void {
+      this.gameService.resetGame();
         this.loadCurrentGame();
-        this.gameService.resetGame();
         console.log(this.currentGame);
     }
 

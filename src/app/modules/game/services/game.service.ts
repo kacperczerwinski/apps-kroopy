@@ -36,7 +36,7 @@ export class GameService {
         };
     }
     private getPlayerName() {
-        return this.gameState.currentPlayer === SexEnum.FEMALE ? this.gameState.femaleName : this.gameState.maleName;
+        return this.gameState.currentPlayer === SexEnum.FEMALE ? this.gameState.maleName : this.gameState.femaleName;
     }
 
     private getSex() {

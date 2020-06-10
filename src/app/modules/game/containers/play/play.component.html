@@ -2,12 +2,13 @@
 <div fxLayout fxLayoutAlign="end end">
     <button mat-raised-button color="accent" (click)="nextLevel()">Siguiente Nivel</button>
 </div>
+
 <div fxLayout fxLayoutAlign="center center">
     <div>
         <div fxLayout="column" fxLayoutAlign="space-between center">
             <img [src]="'../assets/images/levels/' + currentGame.level + '.png'" />
-            <h2 fxFlexOffset.sm="10" fxFlexOffset="10">{{ currentGame.playerName }}</h2>
-            <h2 fxFlexOffset.sm="10" fxFlexOffset="10">{{ currentGame.game.text }}</h2>
+            <h2 fxFlexOffset.sm="10" fxFlexOffset="10" class="male-text">{{ currentGame.playerName }}</h2>
+            <h2 fxFlexOffset.sm="10" fxFlexOffset="10" class="male-text">{{ currentGame.game.text }}</h2>
             <div *ngIf="!play" (click)="play = false">
                 <button
                     fxFlexOffset.sm="1"

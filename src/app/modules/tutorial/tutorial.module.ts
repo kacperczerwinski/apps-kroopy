@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TutorialComponent } from './tutorial.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule } from '@angular/material/button';
 import { RouterModule, Routes } from '@angular/router';
-import { MatCardModule } from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 
 export const routes: Routes = [
@@ -16,6 +14,6 @@ export const routes: Routes = [
 
 @NgModule({
   declarations: [TutorialComponent],
-  imports: [ CommonModule, RouterModule.forChild(routes), FlexLayoutModule, MatButtonModule, MatCardModule, MatListModule]
+  imports: [ CommonModule, RouterModule.forChild(routes), FlexLayoutModule, MatListModule]
 })
 export class TutorialModule { }

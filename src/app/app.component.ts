@@ -7,9 +7,6 @@ import { map, shareReplay } from 'rxjs/operators';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    animations: [
-
-    ]
 })
 export class AppComponent {
     title = 'apps-kroopy';

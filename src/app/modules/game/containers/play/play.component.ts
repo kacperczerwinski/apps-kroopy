@@ -29,9 +29,8 @@ export class PlayComponent implements OnInit {
     constructor(private gameService: GameService) {}
 
     ngOnInit(): void {
-        this.loadCurrentGame();
         this.gameService.resetGame();
-        console.log(this.currentGame);
+        this.loadCurrentGame();
     }
 
     private loadCurrentGame() {
@@ -40,7 +39,7 @@ export class PlayComponent implements OnInit {
 
     startTimer() {
         this.loadCurrentGame();
-        this.play = false;
+        this.play = true;
         const timer$ = interval(1000);
         const sub = timer$.subscribe(sec => {
             this.progressbarValue = (sec * 100) / 5;

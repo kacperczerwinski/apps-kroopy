@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { interval } from 'rxjs';
 import { GameService } from 'src/app/modules/game/services/game.service';
 import { CurrentGame } from 'src/app/modules/game/interfaces/current-game.interface';
@@ -9,34 +9,38 @@ import { trigger, transition, animate, style } from '@angular/animations';
     templateUrl: './play.component.html',
     styleUrls: ['./play.component.scss'],
     animations: [
-        trigger('slideInOut', [
-            transition(':enter', [
-                style({ transform: 'translateY(-100%)' }),
-                animate('200ms ease-in', style({ transform: 'translateY(0%)' }))
-            ]),
-            transition(':leave', [animate('200ms ease-in', style({ transform: 'translateY(-100%)' }))])
-        ])
-    ]
+      trigger(
+        'enterAnimation', [
+          transition(':enter', [
+            style({transform: 'translateX(100%)'}),
+            animate('600ms', style({transform: 'translateX(0)'}))
+          ]),
+          transition(':leave', [
+            style({transform: 'translateX(0)'}),
+            animate('600ms', style({transform: 'translateX(-100%)'}))
+          ])
+        ]
+      )
+    ],
 })
 export class PlayComponent implements OnInit {
     play: boolean;
     progressbarValue = 0;
     curSec = 0;
     currentGame: CurrentGame;
-    visible: boolean;
-    constructor(private gameService: GameService) {}
+    constructor(private gameService: GameService, private changeDetectorRef: ChangeDetectorRef) {}
 
     ngOnInit(): void {
         this.gameService.resetGame();
         this.loadCurrentGame();
     }
 
+
     private loadCurrentGame() {
         this.currentGame = this.gameService.getCurrentGame();
     }
 
     startTimer() {
-        this.loadCurrentGame();
         this.play = true;
         const timer$ = interval(1000);
         const sub = timer$.subscribe(sec => {
@@ -46,13 +50,19 @@ export class PlayComponent implements OnInit {
             if (this.curSec === 6) {
                 sub.unsubscribe();
                 this.progressbarValue = 0;
-                this.loadCurrentGame();
+                this.play=false;
+                this.currentGame = null;
+                this.changeDetectorRef.detectChanges();
+                setTimeout(()=>{
+                  this.loadCurrentGame();
+                },600);
+
             }
         });
     }
-
     nextLevel() {
         this.gameService.nextLevel();
         this.loadCurrentGame();
     }
+
 }

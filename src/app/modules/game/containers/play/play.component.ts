@@ -9,7 +9,6 @@ import { trigger, transition, animate, style } from '@angular/animations';
     templateUrl: './play.component.html',
     styleUrls: ['./play.component.scss'],
     animations: [
-<<<<<<< HEAD
       trigger(
         'enterAnimation', [
           transition(':enter', [
@@ -23,16 +22,6 @@ import { trigger, transition, animate, style } from '@angular/animations';
         ]
       )
     ],
-=======
-        trigger('slideInOut', [
-            transition(':enter', [
-                style({ transform: 'translateY(-100%)' }),
-                animate('200ms ease-in', style({ transform: 'translateY(0%)' }))
-            ]),
-            transition(':leave', [animate('200ms ease-in', style({ transform: 'translateY(-100%)' }))])
-        ])
-    ]
->>>>>>> cc2fa5947c5f82feeac846ae0a0a47c59fb13eff
 })
 export class PlayComponent implements OnInit {
     play: boolean;
@@ -52,10 +41,6 @@ export class PlayComponent implements OnInit {
     }
 
     startTimer() {
-<<<<<<< HEAD
-=======
-        this.loadCurrentGame();
->>>>>>> cc2fa5947c5f82feeac846ae0a0a47c59fb13eff
         this.play = true;
         const timer$ = interval(1000);
         const sub = timer$.subscribe(sec => {

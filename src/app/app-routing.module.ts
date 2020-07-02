@@ -15,8 +15,8 @@ const routes: Routes = [
                 loadChildren: () => import('./modules/game/game.module').then(m => m.GameModule)
             },
             {
-              path: 'tutorial',
-              loadChildren: () => import('./modules/tutorial/tutorial.module').then(m => m.TutorialModule)
+                path: 'tutorial',
+                loadChildren: () => import('./modules/tutorial/tutorial.module').then(m => m.TutorialModule)
             }
         ]
     }

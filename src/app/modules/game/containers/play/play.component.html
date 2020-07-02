@@ -8,7 +8,8 @@
       </div>
         <div fxLayout="column" fxLayoutAlign="space-between center">
             <img [src]="'../assets/images/levels/' + currentGame?.level + '.png'" *ngIf="currentGame" [@enterAnimation]/>
-            <h2  *ngIf="currentGame" [@enterAnimation]>{{ currentGame.game.text }}</h2>
+            <h2  *ngIf="currentGame" [@enterAnimation] [ngClass]="currentGame.sex === 'male' ? 'male-text' : 'female-text'">{{ currentGame.playerName }}</h2>
+            <h2  *ngIf="currentGame" [@enterAnimation] [ngClass]="currentGame.sex === 'male' ? 'male-text' : 'female-text'">{{ currentGame.game.text }}</h2>
             <div class="play-button" *ngIf="!play" (click)="play = false">
                 <button
                     style="width: 80px; height: 80px;"

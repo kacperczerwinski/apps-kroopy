@@ -1,18 +1,17 @@
-<mat-progress-bar mode="determinate" [value]="currentGame.progress"></mat-progress-bar>
+<mat-progress-bar mode="determinate" [value]="currentGame?.progress"></mat-progress-bar>
 <div fxLayout fxLayoutAlign="end end">
     <button mat-raised-button color="accent" (click)="nextLevel()">Siguiente Nivel</button>
 </div>
 
 <div fxLayout fxLayoutAlign="center center">
     <div>
-        <div *ngIf="!visible" [@slideInOut] fxLayout="column" fxLayoutAlign="space-between center">
-            <img [src]="'../assets/images/levels/' + currentGame.level + '.png'" />
-          <h2 fxFlexOffset.sm="10" fxFlexOffset="10" [ngClass]="currentGame.sex === 'male' ? 'male-text' : 'female-text'">{{ currentGame.playerName }}</h2>
-          <h2 fxFlexOffset.sm="10" fxFlexOffset="10"  [ngClass]="currentGame.sex === 'male' ? 'male-text' : 'female-text'">{{ currentGame.game.text }}</h2>
-            <div *ngIf="!play && !visible" (click)="play = false">
+      </div>
+        <div fxLayout="column" fxLayoutAlign="space-between center">
+            <img [src]="'../assets/images/levels/' + currentGame?.level + '.png'" *ngIf="currentGame" [@enterAnimation]/>
+            <h2  *ngIf="currentGame" [@enterAnimation] [ngClass]="currentGame.sex === 'male' ? 'male-text' : 'female-text'">{{ currentGame.playerName }}</h2>
+            <h2  *ngIf="currentGame" [@enterAnimation] [ngClass]="currentGame.sex === 'male' ? 'male-text' : 'female-text'">{{ currentGame.game.text }}</h2>
+            <div class="play-button" *ngIf="!play" (click)="play = false">
                 <button
-                    fxFlexOffset.sm="1"
-                    fxFlexOffset="10"
                     style="width: 80px; height: 80px;"
                     mat-fab
                     color="accent"
@@ -36,5 +35,4 @@
                 />
             </div>
         </div>
-    </div>
 </div>

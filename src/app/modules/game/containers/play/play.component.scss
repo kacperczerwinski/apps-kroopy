@@ -1,10 +1,10 @@
 @import '~@angular/material/theming';
-.level {
-  text-align: right;
-  font-size: 28px;
-  color: #e22bc3;
-}
 
+.play-button {
+  position: relative;
+  bottom: -250px;
+  right: -2px;
+}
 .male-text {
   color: mat-color($mat-indigo, 300);
 }

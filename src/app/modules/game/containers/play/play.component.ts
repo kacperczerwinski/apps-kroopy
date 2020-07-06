@@ -65,4 +65,9 @@ export class PlayComponent implements OnInit {
         this.loadCurrentGame();
     }
 
+    skipPlayer(){
+      this.gameService.skipPlayer();
+      this.loadCurrentGame();
+    }
+
 }

@@ -80,4 +80,8 @@ export class GameService {
         this.gameState.level = ++this.gameState.level;
         this.gameState.progress = 0;
     }
+
+    skipPlayer() {
+      this.gameState.currentPlayer === SexEnum.FEMALE ? this.gameState.maleName : this.gameState.femaleName;
+    }
 }

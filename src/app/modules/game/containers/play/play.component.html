@@ -34,5 +34,16 @@
                     style="position:relative; top: -75px; left: 37px; max-width: 40%;"
                 />
             </div>
+            <div fxLayoutAlign="space-between center" style="position:relative; top: 10px; left: -5px" *ngIf="!play" (click)="play = false">
+              <button mat-raised-button
+                color="accent"
+                fxFlexOffset.sm="1"
+                fxFlexOffset="10"
+                style="width: 80px; height: 80px;"
+                mat-fab
+                (click)="skipPlayer()">
+                Skip
+            </button>
+          </div>
         </div>
 </div>
